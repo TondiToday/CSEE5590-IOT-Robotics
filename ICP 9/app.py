@@ -10,4 +10,4 @@ app.register_blueprint(main_page)
 app.register_blueprint(machinelearning, url_prefix='/machinelearning')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if __name__ == "__main__":
-    app.run()
+    app.run(Debug=True)

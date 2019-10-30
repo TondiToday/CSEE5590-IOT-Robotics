@@ -1,6 +1,7 @@
 import os
 from flask import Flask, flash, request, redirect, render_template, Blueprint, session
 from werkzeug.utils import secure_filename
+from pydub import AudioSegment
 
 
 # Variables
@@ -8,7 +9,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 main_page = Blueprint('main_page',__name__, template_folder='/templates')
 UPLOAD_FOLDER = 'C:/Users/tondi/OneDrive/Documents/GitHub/CSEE5590-IOT-Robotics/ICP 9/downloads'
-ALLOWED_EXTENSIONS = set(['txt', 'wav'])
+ALLOWED_EXTENSIONS = set(['txt', 'wav', 'mp3'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'secret key'
 
@@ -37,8 +38,11 @@ def upload_file():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            session['filename'] = filename
+            filename = AudioSegment.from_mp3(UPLOAD_FOLDER + '/' + filename)
+            filename.export(UPLOAD_FOLDER + '/' + filename, format="wav")
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            print(UPLOAD_FOLDER + '/' + filename)
+            session['filename'] = filename
             flash('File successfully uploaded')
             return redirect('/machinelearning')
         else:
