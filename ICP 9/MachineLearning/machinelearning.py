@@ -10,7 +10,7 @@ from sklearn.svm import LinearSVC
 from sklearn.metrics import accuracy_score
 import os
 import tensorflow as tf
-import math
+
 # Variables
 UPLOAD_FOLDER = 'C:/Users/tondi/OneDrive/Documents/GitHub/CSEE5590-IOT-Robotics/ICP 9/downloads'
 machinelearning = Blueprint('machinelearning',__name__, template_folder='/templates')
@@ -62,23 +62,41 @@ def run_machinelearning():
     X = []
     y = []
     audio_plots = []
+    audio_parts_plots = []
     for (_, _, filenames) in os.walk('downloads/wav_plots/'):
         audio_plots.extend(filenames)
         break
-
+    for (_, _, filenames) in os.walk('downloads/audio_parts_classes/'):
+        audio_parts_plots.extend(filenames)
+        break
+    print(audio_plots)
+    count = 1
     for aplot in audio_plots:
-        if len(audio_plots) <= len(audio_plots)/2:
+        if count < len(audio_plots)/2:
             X.append(get_features(UPLOAD_FOLDER + '/wav_plots/' + aplot))
             y.append(0)
+            count += 1
         else:
             X.append(get_features(UPLOAD_FOLDER + '/wav_plots/' + aplot))
             y.append(1)
+            count += 1
+    count = 1
+    for aplot in audio_parts_plots:
+            X.append(get_features(UPLOAD_FOLDER + '/audio_parts_classes/' + aplot))
+            y.append(2)
+            count += 1
+            # X.append(get_features(UPLOAD_FOLDER + '/audio_parts_classes/' + aplot))
+            # y.append(3)
+            # count += 1
+
     print(X, "line 71")
     print(y, "line 72")
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42, stratify=y)
     clf = LinearSVC(random_state=0, tol=1e-5)
-    print(X_train, "line 75")
-    print(y_train, "line 76")
+    labels = np.unique(X_train)
+    print(labels, "line 80")
+    labels = np.unique(y_train)
+    print(labels, "line 82")
     print(clf, "line clf")
     clf.fit(X_train, y_train)
     print("line 83")

@@ -55,9 +55,9 @@ def extract_audio(filename):
     if not os.path.exists("downloads/audio_parts"):
         os.makedirs("downloads/audio_parts")
     count = 1
-    for i in range(1, 1000, 15):
-        t1 = i * 1000
-        t2 = (i+15) * 1000
+    for i in range(1, 60, 5):
+        t1 = i * 100
+        t2 = (i+15) * 100
         newAudio = filename
         newAudio = newAudio[t1:t2]
         newAudio.export(UPLOAD_FOLDER + "/audio_parts/audio_parts" + str(count) + '.wav', format="wav")  # Exports to a wav file in the current path.
