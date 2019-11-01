@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa0c85e2-016f-4431-9cec-ff3bbf73f6c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearning/machinelearning.py" beforeDir="false" afterPath="$PROJECT_DIR$/MachineLearning/machinelearning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/main_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/main_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/audio_parts/audio_parts1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/audio_parts/audio_parts2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/audio_parts/audio_parts3.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/audio_parts/audio_parts4.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/audio_parts/audio_parts5.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/audio_parts/audio_parts6.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/audio_parts/audio_parts7.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/test.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/wav_plots/audio_parts1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/wav_plots/audio_parts2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/wav_plots/audio_parts3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/wav_plots/audio_parts4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/wav_plots/audio_parts5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/wav_plots/audio_parts6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/wav_plots/audio_parts7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloads/wavfile.wav" beforeDir="false" />
-    </list>
+    <list default="true" id="fa0c85e2-016f-4431-9cec-ff3bbf73f6c7" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +18,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MachineLearning/machinelearning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
+            <state relative-caret-position="239">
               <caret line="87" column="24" selection-start-line="87" selection-start-column="24" selection-end-line="87" selection-end-column="24" />
               <folding>
                 <element signature="e#0#67#0" expanded="true" />
@@ -283,12 +262,12 @@
       <workItem from="1572395266983" duration="4587000" />
       <workItem from="1572485080302" duration="3801000" />
       <workItem from="1572563639582" duration="21215000" />
-      <workItem from="1572621562218" duration="7652000" />
+      <workItem from="1572621562218" duration="8566000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82590000" />
+    <option name="totallyTimeSpent" value="83504000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -387,7 +366,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MachineLearning/machinelearning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
+        <state relative-caret-position="239">
           <caret line="87" column="24" selection-start-line="87" selection-start-column="24" selection-end-line="87" selection-end-column="24" />
           <folding>
             <element signature="e#0#67#0" expanded="true" />
