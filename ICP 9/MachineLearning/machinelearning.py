@@ -8,7 +8,9 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 from sklearn.metrics import accuracy_score
-
+import os
+import tensorflow as tf
+import math
 # Variables
 UPLOAD_FOLDER = 'C:/Users/tondi/OneDrive/Documents/GitHub/CSEE5590-IOT-Robotics/ICP 9/downloads'
 machinelearning = Blueprint('machinelearning',__name__, template_folder='/templates')
@@ -17,6 +19,8 @@ machinelearning = Blueprint('machinelearning',__name__, template_folder='/templa
 # Model information
 base_model = VGG19(weights='imagenet')
 model = Model(inputs=base_model.input, outputs=base_model.get_layer('flatten').output)
+global graph
+graph = tf.get_default_graph()
 
 
 def get_features(img_path):
@@ -24,7 +28,8 @@ def get_features(img_path):
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
-    flatten = model.predict(x)
+    with graph.as_default():
+        flatten = model.predict(x)
     return list(flatten[0])
 
 
@@ -36,9 +41,9 @@ def plot_waveforms(file_name):
     plt.plot(audio)
     plt.ylabel("Amplitude")
     plt.xlabel("Time")
-    plt.savefig("wavePlot/" + "test_sample.png")
+    plt.savefig("downloads/wav_plots/" + "test_sample.png")
     plt.close("all")
-    with open(UPLOAD_FOLDER + "wavePlot/test_sample.png") as f:
+    with open(UPLOAD_FOLDER + "/wav_plots/test_sample.png") as f:
         wave_form = f.read()
     return wave_form
 
@@ -51,20 +56,51 @@ def upload_machinelearning_form():
     return render_template('machinelearning.html')
 
 
-@machinelearning.route('/', methods=['POST'])
+@machinelearning.route('/machinelearning', methods=['POST'])
 def run_machinelearning():
-    filename = session.get('filename', None)
-
-    with open(UPLOAD_FOLDER + "/" + filename) as f:
-        file_content = f.read()
+    print("line 56")
     X = []
-    Y = []
-    X.append(get_features(plot_waveforms(file_content)))
-    Y.append(0)
+    y = []
+    audio_plots = []
+    for (_, _, filenames) in os.walk('downloads/wav_plots/'):
+        audio_plots.extend(filenames)
+        break
+
+    for aplot in audio_plots:
+        if len(audio_plots) <= len(audio_plots)/2:
+            X.append(get_features(UPLOAD_FOLDER + '/wav_plots/' + aplot))
+            y.append(0)
+        else:
+            X.append(get_features(UPLOAD_FOLDER + '/wav_plots/' + aplot))
+            y.append(1)
+    print(X, "line 71")
+    print(y, "line 72")
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42, stratify=y)
     clf = LinearSVC(random_state=0, tol=1e-5)
+    print(X_train, "line 75")
+    print(y_train, "line 76")
+    print(clf, "line clf")
     clf.fit(X_train, y_train)
+    print("line 83")
     predicted = clf.predict(X_test)
+
     # get the accuracy
     flash(accuracy_score(y_test, predicted))
+    print(accuracy_score(y_test, predicted))
     return render_template('machinelearning.html')
+
+
+#    with open(UPLOAD_FOLDER + "/wav_plots/") as f:
+#        print("line 57")
+#        file_content = f.read()
+#    X = []
+#    Y = []
+#    X.append(get_features(plot_waveforms(file_content)))
+#    Y.append(0)
+#    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42, stratify=y)
+#    clf = LinearSVC(random_state=0, tol=1e-5)
+#    clf.fit(X_train, y_train)
+#    predicted = clf.predict(X_test)
+#    # get the accuracy
+#    flash(accuracy_score(y_test, predicted))
+#    return render_template('machinelearning.html')
