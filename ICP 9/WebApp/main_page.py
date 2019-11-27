@@ -55,7 +55,7 @@ def extract_audio(filename):
     if not os.path.exists("downloads/audio_parts"):
         os.makedirs("downloads/audio_parts")
     count = 1
-    for i in range(1, 60, 5):
+    for i in range(1, 60, 5 ):
         t1 = i * 100
         t2 = (i+15) * 100
         newAudio = filename

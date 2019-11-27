@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report
 import os
 import tensorflow as tf
 
@@ -101,9 +102,13 @@ def run_machinelearning():
     clf.fit(X_train, y_train)
     print("line 83")
     predicted = clf.predict(X_test)
-
+    target_names = [ 'COPD', 'LRTI', 'URTI']
     # get the accuracy
     flash(accuracy_score(y_test, predicted))
+    flash(classification_report(y_test, predicted, labels=None, target_names=target_names, sample_weight=None, digits=2,
+                                output_dict=False))
+    print(classification_report(y_test, predicted, labels=None, target_names=target_names, sample_weight=None, digits=2,
+                                output_dict=False))
     print(accuracy_score(y_test, predicted))
     return render_template('machinelearning.html')
 
