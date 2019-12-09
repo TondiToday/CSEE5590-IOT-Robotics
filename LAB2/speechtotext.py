@@ -17,6 +17,6 @@ try:
     for word in words:
         if ChosenKeyword == word:
             counter = counter + 1
-    print("Your Chosen word: " + ChosenKeyword + "was repeated: " + str(counter) + " times.")
+    print("Your Chosen word: " + ChosenKeyword + " was repeated: " + str(counter) + " times.")
 except:
     pass
